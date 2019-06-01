@@ -1,0 +1,33 @@
+/* This File is Mostly for reference */
+
+primary {
+	color: 	#039be5;
+}
+
+p-light {
+	color: #63ccff;
+}
+
+p-dark {
+	color: #006db3;
+}
+
+secondary {
+	color: #90a4ae;
+}
+
+s-light {
+	color: #c1d5e0;
+}
+
+s-dark {
+	color: #62757f;
+}
+
+text-on-primary {
+	color: #000000;
+}
+
+text-on-secondary {
+	color: #ffffff;
+}

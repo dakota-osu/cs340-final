@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<link rel="stylesheet" href="css/color.css">
+		<link rel="stylesheet" href="css/style.css">
+	</head>
+
+	<body>
+	<header>
+		<div id="site_header">
+			<p> CS340 - Tournament Project </p>
+		</div>	
+		<div id="navigation_bar"> </div>
+	</header>
+
+
+	Tournament
+
+	<div id="asdf"></div>
+
+	</body>
+
+	<script type="text/javascript" src="js/header.js"></script>
+
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
+	<script type="text/javascript"> 
+		window.onload = function() {
+			create_nav_bar_at("navigation_bar", "Tournaments");
+		
+			$.get("http://web.engr.oregonstate.edu/~altond/CS340-Final/php/test_pull.php", function(data) {
+				let asdf = document.getElementById("asdf");
+				asdf.innerText = data;
+				console.log("hello");
+			});
+			
+		}
+	</script>
+</html>
+
+
+
+
