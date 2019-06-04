@@ -19,16 +19,16 @@
 	<div id="login_card">
 		<form>
 			<div class="input_group">
-				<input type="text" name="user">
+				<input type="text" name="user" id="form_user_name">
 				<label>User Name</label>
 			</div>
 
 			<div class="input_group">
-				<input type="password" name="pass">
+				<input type="password" name="pass" id="form_password">
 				<label>Password</label>
 			</div>
 
-			<button type="button" class="button">
+			<button type="button" class="button" id="login-button">
 				Login
 			</button>
 		</form>
@@ -38,6 +38,7 @@
 	</body>
 
 	<script type="text/javascript" src="js/header.js"></script>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
 	<script type="text/javascript"> 
 		window.onload = function() {
 			create_nav_bar_at("navigation_bar", "Login");
@@ -53,6 +54,31 @@
 					}
 				};		
 			});
+
+			let button = document.getElementById("login-button");
+			button.onclick = function() {
+				let username = document.getElementById("form_user_name").value;
+				let password = document.getElementById("form_password").value;
+
+				let url = "https://web.engr.oregonstate.edu/~altond/dist/php/authenticate";
+				let data = {
+					user: username,
+					pass: password
+				};
+			
+				$.post(url, data, function(res) {
+					res = JSON.parse(res);
+					
+					if(res.value) {
+						localStorage.setItem("logged_in", true);
+						window.location.href = "https://web.engr.oregonstate.edu/~altond/dist/tournament.html";
+					} else {
+						localStorage.setItem("logged_in", false);
+						// handle failure
+					}
+
+				});
+			}
 		}
 	</script>
 </html>
