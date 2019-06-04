@@ -3,6 +3,7 @@
 	<head>
 		<link rel="stylesheet" href="css/color.css">
 		<link rel="stylesheet" href="css/style.css">
+		<link rel="stylesheet" href="css/login.css">
 	</head>
 
 	<body>
@@ -15,7 +16,24 @@
 
 
 
-	login
+	<div id="login_card">
+		<form>
+			<div class="input_group">
+				<input type="text" name="user">
+				<label>User Name</label>
+			</div>
+
+			<div class="input_group">
+				<input type="password" name="pass">
+				<label>Password</label>
+			</div>
+
+			<button type="button" class="button">
+				Login
+			</button>
+		</form>
+	</div>
+
 
 	</body>
 
@@ -23,6 +41,18 @@
 	<script type="text/javascript"> 
 		window.onload = function() {
 			create_nav_bar_at("navigation_bar", "Login");
+
+			let inputs = document.getElementsByTagName("input");
+			let inputArray = Array.prototype.slice.call(inputs);
+			inputArray.forEach(function(input) {
+				input.onblur = function() {
+					if(input.value) {
+						input.classList.add('used');
+					} else {
+						input.classList.remove('used');
+					}
+				};		
+			});
 		}
 	</script>
 </html>
