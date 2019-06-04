@@ -27,7 +27,7 @@
 		window.onload = function() {
 			create_nav_bar_at("navigation_bar", "Tournaments");
 		
-			$.get("http://web.engr.oregonstate.edu/~altond/CS340-Final/php/test_pull.php", function(data) {
+			$.get("http://web.engr.oregonstate.edu/~altond/dist/php/test_pull.php", function(data) {
 				let asdf = document.getElementById("asdf");
 				asdf.innerText = data;
 				console.log("hello");
