@@ -23,7 +23,7 @@ if($_SERVER['REQUEST_METHOD'] === 'POST') {
 	$password = md5($_POST['pass']);
 
 	
-	$query = "SELECT user_name FROM Account WHERE Account.hashed_pass = \"{$password}\"";
+	$query = "SELECT user_name FROM Account WHERE Account.hashed_pass = \"{$password}\" AND user_name = \"{$user_name}\"";
 	$result = mysqli_query($conn, $query);
 
 

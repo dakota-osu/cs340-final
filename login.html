@@ -57,13 +57,13 @@
 
 			let button = document.getElementById("login-button");
 			button.onclick = function() {
-				let username = document.getElementById("form_user_name").value;
-				let password = document.getElementById("form_password").value;
+				let username = document.getElementById("form_user_name");
+				let password = document.getElementById("form_password");
 
 				let url = "https://web.engr.oregonstate.edu/~altond/dist/php/authenticate";
 				let data = {
-					user: username,
-					pass: password
+					user: username.value,
+					pass: password.value
 				};
 			
 				$.post(url, data, function(res) {
@@ -74,7 +74,12 @@
 						window.location.href = "https://web.engr.oregonstate.edu/~altond/dist/tournament.html";
 					} else {
 						localStorage.setItem("logged_in", false);
-						// handle failure
+						username.classList.add('login_error');
+						password.classList.add('login_error');
+						
+						let labels = document.getElementsByTagName("label");
+						labels[0].classList.add('login_error');
+						labels[1].classList.add('login_error');
 					}
 
 				});

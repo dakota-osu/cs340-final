@@ -73,5 +73,7 @@ input:focus ~ label, input.used ~ label {
 	background: #006DB3;
 }
 
-
+.login_error {	
+	border-bottom: 1px solid red !important; 
+}
 
