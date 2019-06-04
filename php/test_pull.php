@@ -6,9 +6,8 @@ $conn = mysqli_connect(DB_HOST, DB_USER, DB_PASSWORD, DB_NAME);
 
 
 if(!$conn) {
-	http_response_code(500);
 	echo mysql_error();
-	exit("\nfailure\n");
+	http_response_code(500);
 } 
 
 
