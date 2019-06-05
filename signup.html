@@ -57,7 +57,8 @@
 					} else {
 						input.classList.remove('used');
 					}
-				};		
+				};	
+				input.blur();	
 			});
 
 			let button = document.getElementById("signup-button");
@@ -72,7 +73,18 @@
 					pass: password.value
 				};
 
-				// check paasss 
+				// check pass 
+				if(password.value !== confirm_password.value){
+					username.classList.add('signup_error');
+					password.classList.add('signup_error');
+					confirm_password.classList.add('signup_error');			
+
+					let labels = document.getElementsByTagName("label");
+					labels[0].classList.add('signup_error');
+					labels[1].classList.add('signup_error');
+					labels[2].classList.add('signup_error');
+					return;
+				}
 				
 				$.post(url, data, function(res) {
 					res = JSON.parse(res);
@@ -82,12 +94,12 @@
 						window.location.href = "https://web.engr.oregonstate.edu/~altond/dist/tournament.html";
 					} else {
 						localStorage.setItem("logged_in", false);
-						username.classList.add('login_error');
-						password.classList.add('login_error');
+						username.classList.add('signup_error');
+						password.classList.add('signup_error');
 						
 						let labels = document.getElementsByTagName("label");
-						labels[0].classList.add('login_error');
-						labels[1].classList.add('login_error');
+						labels[0].classList.add('signup_error');
+						labels[1].classList.add('signup_error');
 					}
 
 				});
