@@ -1,0 +1,79 @@
+form {
+	width: 480px;
+	margin: 4em;
+	margin-left: auto;
+	margin-right: auto;
+	padding: 3em;
+	background: #fafafa;
+	border: 1px solid #ebebeb;
+	box-shadow: rgba(0, 0, 0, 0.15) 0px 1px 1px 0px,
+				rgba(0, 0, 0, 0.1) 0px 1px 2px 0px;	
+}
+
+.input_group {
+	position: relative;
+	margin-bottom: 45px;
+}
+
+input {
+	font-size: 18px;
+	padding: 10px 10px 10px 5px;
+	display: block;
+	background: #fafafa;
+	color: #636363;
+	width: 100%;
+	border: none;
+	border-radius: 0;
+	border-bottom: 1px solid #90a4ae;
+}
+
+input:focus {
+	outline: none;
+	border-bottom: 1px solid #039be5; 
+}
+
+label {
+	color: #90A4AE;
+	font-size: 18px;
+	font-weight: normal;
+	position: absolute;
+	pointer-events: none;
+	left: 5px;
+	top: 10px;
+	transition: all 0.2s ease;
+}
+
+input:focus ~ label, input.used ~ label {
+	top: -20px;
+	transform: scale(0.75);
+	left: -2px;
+	color: #4a89dc;
+}
+
+.button {
+	position: relative;
+	display: inline-block;
+	padding: 12px 24px;
+	margin: 0.3em 0 1em 0;
+	width: 100%;
+	vertical-align: middle;
+	color:#FFFFFF;
+	font-size: 16px;
+	line-height: 20px;
+	text-align: center;
+	letter-spacing: 1px;
+	background: transparent;
+	border: 0;
+	border-bottom: 2px solid #3160B6;
+	cursor: pointer;
+	background: #039BE5;
+}
+
+.button:hover {
+	background: #006DB3;
+}
+
+.signup_error {	
+	border-bottom: 1px solid red !important; 
+}
+

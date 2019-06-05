@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<link rel="stylesheet" href="css/color.css">
+		<link rel="stylesheet" href="css/style.css">
+		<link rel="stylesheet" href="css/signup.css">
+	</head>
+
+	<body>
+	<header>
+		<div id="site_header">
+			<p> CS340 - Tournament Project </p>
+		</div>	
+		<div id="navigation_bar"> </div>
+	</header>
+
+
+
+	<div id="signup_card">
+		<form>
+			<div class="input_group">
+				<input type="text" name="user" id="form_user_name">
+				<label>User Name</label>
+			</div>
+
+			<div class="input_group">
+				<input type="password" name="pass" id="form_password">
+				<label>Password</label>
+            </div>
+            
+            <div class="input_group">
+				<input type="password" name="pass" id="confirm_password">
+				<label>Verify Password</label>
+			</div>
+
+			<button type="button" class="button" id="signup-button">
+				Sign Up
+			</button>
+		</form>
+	</div>
+
+
+	</body>
+
+	<script type="text/javascript" src="js/header.js"></script>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
+	<script type="text/javascript"> 
+		window.onload = function() {
+			create_nav_bar_at("navigation_bar", "Login");
+
+			let inputs = document.getElementsByTagName("input");
+			let inputArray = Array.prototype.slice.call(inputs);
+			inputArray.forEach(function(input) {
+				input.onblur = function() {
+					if(input.value) {
+						input.classList.add('used');
+					} else {
+						input.classList.remove('used');
+					}
+				};	
+				input.blur();	
+			});
+
+			let button = document.getElementById("signup-button");
+			button.onclick = function() {
+				let username = document.getElementById("form_user_name");
+				let password = document.getElementById("form_password");
+				let confirm_password = document.getElementById("confirm_password");
+
+				let url = "https://web.engr.oregonstate.edu/~altond/dist/php/signup.php";
+				let data = {
+					user: username.value,
+					pass: password.value
+				};
+
+				// check pass 
+				if(password.value !== confirm_password.value){
+					username.classList.add('signup_error');
+					password.classList.add('signup_error');
+					confirm_password.classList.add('signup_error');			
+
+					let labels = document.getElementsByTagName("label");
+					labels[0].classList.add('signup_error');
+					labels[1].classList.add('signup_error');
+					labels[2].classList.add('signup_error');
+					return;
+				}
+				
+				$.post(url, data, function(res) {
+					res = JSON.parse(res);
+					
+					if(res.value) {
+						localStorage.setItem("logged_in", true);
+						window.location.href = "https://web.engr.oregonstate.edu/~altond/dist/tournament.html";
+					} else {
+						localStorage.setItem("logged_in", false);
+						username.classList.add('signup_error');
+						password.classList.add('signup_error');
+						
+						let labels = document.getElementsByTagName("label");
+						labels[0].classList.add('signup_error');
+						labels[1].classList.add('signup_error');
+					}
+
+				});
+
+            
+        	}
+
+		}
+	</script>
+</html>
+
+
