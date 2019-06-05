@@ -24,7 +24,7 @@ if($_SERVER['REQUEST_METHOD'] === 'POST') {
 
 	
 	//$query = "SELECT user_name FROM Account WHERE Account.hashed_pass = \"{$password}\" AND user_name = \"{$user_name}\"";
-	$query = "INSERT INTO Account (user_name, hashed_pass) VALUES ( \"{$password}\", \"{$user_name}\" )";		///password not yet hashed
+	$query = "INSERT INTO Account (user_name, hashed_pass) VALUES ( \"{$user_name}\", \"{$password}\"  )";		///password not yet hashed
 	$result = mysqli_query($conn, $query);
 
 
