@@ -7,7 +7,7 @@ function create_nav_bar_at(node_id, current_page) {
 		["Character Stats", "character_stats.html"]
 	];
 
-	if(localStorage.getItem("logged_in")) {
+	if(localStorage.getItem("logged_in") && localStorage.getItem("logged_in") === "true") {
 		content.unshift(["Account", "account.html"]);
 		content.push(["Logout", "logout.html"]);
 	} else {
@@ -21,6 +21,7 @@ function create_nav_bar_at(node_id, current_page) {
 		if(pair[0] === current_page) {
 			li.classList.add("active");
 		}
+
 
 		let a  = document.createElement("a");
 		a.href = pair[1];
