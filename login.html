@@ -31,6 +31,9 @@
 			<button type="button" class="button" id="login-button">
 				Login
 			</button>
+			<div class="login_footer">
+				Don't have an account? <a href="signup.html">sign up</a>
+			</div>
 		</form>
 	</div>
 
@@ -60,7 +63,7 @@
 				let username = document.getElementById("form_user_name");
 				let password = document.getElementById("form_password");
 
-				let url = "https://web.engr.oregonstate.edu/~altond/dist/php/authenticate";
+				let url = "https://web.engr.oregonstate.edu/~altond/dist/php/authenticate.php";
 				let data = {
 					user: username.value,
 					pass: password.value
@@ -71,7 +74,7 @@
 					
 					if(res.value) {
 						localStorage.setItem("logged_in", true);
-						window.location.href = "https://web.engr.oregonstate.edu/~altond/dist/tournament.html";
+						window.location.href = "tournament.html";
 					} else {
 						localStorage.setItem("logged_in", false);
 						username.classList.add('login_error');

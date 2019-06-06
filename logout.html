@@ -15,7 +15,6 @@
 
 
 
-	logout
 
 	</body>
 
@@ -23,6 +22,8 @@
 	<script type="text/javascript"> 
 		window.onload = function() {
 			create_nav_bar_at("navigation_bar", "Logout");
+			localStorage.setItem("logged_in", false);
+			window.location.href = "tournament.html";
 		}
 	</script>
 </html>
