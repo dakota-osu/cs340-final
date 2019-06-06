@@ -14,15 +14,28 @@
 	</header>
 
 
-
-	login
+	<div id="bracket">
+	</div>
 
 	</body>
 
 	<script type="text/javascript" src="js/header.js"></script>
+	<script type="text/javascript" src="js/bracket.js"></script>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
 	<script type="text/javascript"> 
 		window.onload = function() {
-			create_nav_bar_at("navigation_bar", "Login");
+			create_nav_bar_at("navigation_bar", "Tournament");
+
+			let url_base = "https://web.engr.oregonstate.edu/~altond/dist/php/bracket.php";
+			let url = url_base + "?tourney=1";
+			$.get(url, function(res) {
+				let bracket = document.getElementById("bracket");
+				// bracket.innerHTML = res;
+				bracket.appendChild(create_bracket(JSON.parse(res)));
+			});
+
+
+
 		}
 	</script>
 </html>
