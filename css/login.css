@@ -82,4 +82,9 @@ input:focus ~ label, input.used ~ label {
 .login_footer {
 	text-align: center;
 	margin-top: 0.4em;
+	font-size: 0.7em;
+}
+
+div.login_footer a {
+	text-decoration: none;
 }
