@@ -3,6 +3,7 @@
 	<head>
 		<link rel="stylesheet" href="css/color.css">
 		<link rel="stylesheet" href="css/style.css">
+		<link rel="stylesheet" href="css/tournament_list.css">
 	</head>
 
 	<body>
@@ -14,22 +15,40 @@
 	</header>
 
 
-	Test Tournament
-
-	<div id="asdf"></div>
+	<div id="tournament-list">
+		<div class="card">
+			<span class="card-header">Tournament One</span>
+			<div class="card-content">
+				<span class="card-content-title">Player Count</span>
+				<span class="card-content-subtitle">8</span>
+			</div>
+			<div class="card-content">
+				<span class="card-content-title">Game</span>
+				<span class="card-content-subtitle">Super Smash Brothers</span>
+			</div>
+			<div class="card-footer">
+				<button class="card-footer-action">Go To Tournament</button>
+			</div>
+		</div>
+	</div>
 
 	</body>
 
 	<script type="text/javascript" src="js/header.js"></script>
-
+	<script type="text/javascript" src="js/tournament_card.js"></script>
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
 	<script type="text/javascript"> 
 		window.onload = function() {
 			create_nav_bar_at("navigation_bar", "Tournaments");
 		
-			$.get("https://web.engr.oregonstate.edu/~altond/dist/php/test_pull.php", function(data) {
-				let asdf = document.getElementById("asdf");
-				asdf.innerText = data;
+			$.get("https://web.engr.oregonstate.edu/~altond/dist/php/tournament.php", function(res) {
+				let tournament_list = document.getElementById("tournament-list");
+				let tournaments = JSON.parse(res);
+
+				tournaments.forEach(function(tournament) {
+					let card = create_tournament_card(tournament);
+					tournament_list.appendChild(card);
+				});	
 			});
 			
 		}
