@@ -1,9 +1,13 @@
-yout Specifics
-*/
-main{
+/* sourced from : https://codepen.io/aronduby/pen/qliuj?editors=1100 */
+
+div .bracket {
 	display:flex;
 	flex-direction:row;
+	font-size: small;
+	padding: 10px;
+	line-height: 1.4em;
 }
+
 .round{
 	display:flex;
 	flex-direction:column;
@@ -12,44 +16,42 @@ main{
 	list-style:none;
 	padding:0;
 }
-.round .spacer{ flex-grow:1; }
-.round .spacer:first-child,
-.round .spacer:last-child{ flex-grow:.5; }
 
-.round .game-spacer{
+.round .spacer { 
+	flex-grow:1; 
+}
+
+.round .spacer:first-child,
+.round .spacer:last-child { 
+	flex-grow:0.5; 
+}
+
+.round .match-spacer{
 	flex-grow:1;
 }
 
-/*
- *  *  General Styles
- *  */
-body{
-	font-family:sans-serif;
-	font-size:small;
-	padding:10px;
-	line-height:1.4em;
-}
-
-li.game{
+li.match{
 	padding-left:20px;
 }
 
-li.game.winner{
+li.match.winner{
 	font-weight:bold;
 }
-li.game span{
+li.match span{
 	float:right;
 	margin-right:5px;
 }
 
-li.game-top{ border-bottom:1px solid #aaa; }
+li.player-one { 
+	border-bottom:1px solid #aaa; 
+}
 
-li.game-spacer{ 
+li.match-spacer{ 
 	border-right:1px solid #aaa;
 	min-height:40px;
 }
 
-li.game-bottom{ 
+li.player-two{ 
 	border-top:1px solid #aaa;
 }
 

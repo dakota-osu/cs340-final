@@ -3,6 +3,7 @@
 	<head>
 		<link rel="stylesheet" href="css/color.css">
 		<link rel="stylesheet" href="css/style.css">
+		<link rel="stylesheet" href="css/bracket.css">
 	</head>
 
 	<body>
@@ -14,7 +15,7 @@
 	</header>
 
 
-	<div id="bracket">
+	<div id="tourney-bracket">
 	</div>
 
 	</body>
@@ -27,11 +28,13 @@
 			create_nav_bar_at("navigation_bar", "Tournament");
 
 			let url_base = "https://web.engr.oregonstate.edu/~altond/dist/php/bracket.php";
-			let url = url_base + "?tourney=1";
+			let url = url_base + "?tourney=9";
 			$.get(url, function(res) {
-				let bracket = document.getElementById("bracket");
+				let bracket = document.getElementById("tourney-bracket");
 				// bracket.innerHTML = res;
-				bracket.appendChild(create_bracket(JSON.parse(res)));
+				let b = create_bracket(JSON.parse(res));
+				b.classList.add("bracket");
+				bracket.appendChild(b);
 			});
 
 

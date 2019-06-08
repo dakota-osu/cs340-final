@@ -20,6 +20,7 @@ function create_bracket(matches) {
 		ul.classList.add("round");
 
 		round_map[round].forEach(function(match) {
+						
 			let li1 = document.createElement("li");
 			li1.classList.add("match");
 			li1.classList.add("player-one");
@@ -28,6 +29,7 @@ function create_bracket(matches) {
 			let match_spacer = document.createElement("li");
 			match_spacer.classList.add("match");
 			match_spacer.classList.add("match-spacer");
+			match_spacer.innerHTML = "&nbsp;";
 
 			let li2 = document.createElement("li");
 			li2.classList.add("match");
@@ -35,7 +37,8 @@ function create_bracket(matches) {
 			li2.innerHTML = match["player_two"];
 	
 			let spacer = document.createElement("li");
-			spacer.classList.add("match");
+			spacer.classList.add("spacer");
+			spacer.innerHTML = "&nbsp;";
 
 			if(match["victor"]) {
 				if(match["victor"] === match["player_one"]) {
@@ -45,14 +48,21 @@ function create_bracket(matches) {
 				}
 			}
 
+			ul.appendChild(spacer);
 			ul.appendChild(li1);
 			ul.appendChild(match_spacer);
 			ul.appendChild(li2);
-			ul.appendChild(spacer);
 		});
+
+		let spacer = document.createElement("li");
+		spacer.classList.add("spacer");
+		spacer.innerHTML = "&nbsp;";
+
+		ul.appendChild(spacer);
 
 		bracket.appendChild(ul);
 	});
 
+	bracket.classList.add("bracket");
 	return bracket;
 }
