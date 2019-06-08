@@ -12,7 +12,7 @@ if(!$conn) {
 
 if($_SERVER['REQUEST_METHOD'] === 'GET') {
 	
-	$query = "SELECT * FROM SupportedGames";
+	$query = "SELECT * FROM SupportedGame";
 
 	$result = mysqli_query($conn, $query);
 
