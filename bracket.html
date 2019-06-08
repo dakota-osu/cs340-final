@@ -3,6 +3,7 @@
 	<head>
 		<link rel="stylesheet" href="css/color.css">
 		<link rel="stylesheet" href="css/style.css">
+		<link rel="stylesheet" href="css/bracket.css">
 	</head>
 
 	<body>
@@ -14,15 +15,30 @@
 	</header>
 
 
-
-	login
+	<div id="tourney-bracket">
+	</div>
 
 	</body>
 
 	<script type="text/javascript" src="js/header.js"></script>
+	<script type="text/javascript" src="js/bracket.js"></script>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
 	<script type="text/javascript"> 
 		window.onload = function() {
-			create_nav_bar_at("navigation_bar", "Login");
+			create_nav_bar_at("navigation_bar", "Tournament");
+
+			let url_base = "https://web.engr.oregonstate.edu/~altond/dist/php/bracket.php";
+			let url = url_base + window.location.search;
+			$.get(url, function(res) {
+				let bracket = document.getElementById("tourney-bracket");
+				// bracket.innerHTML = res;
+				let b = create_bracket(JSON.parse(res));
+				b.classList.add("bracket");
+				bracket.appendChild(b);
+			});
+
+
+
 		}
 	</script>
 </html>
