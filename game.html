@@ -1,9 +1,9 @@
-
 <!DOCTYPE html>
 <html>
 	<head>
 		<link rel="stylesheet" href="css/color.css">
 		<link rel="stylesheet" href="css/style.css">
+		<link rel="stylesheet" href="css/game.css">
 	</head>
 
 	<body>
@@ -15,15 +15,39 @@
 	</header>
 
 
-
-	game
-
+	<div id="game-list">
+		<div class="card">
+			<span class="card-header">
+				<img class="card-header-img" src="https://web.engr.oregonstate.edu/~altond/pics/games/smashbros64.jpg"></img>	
+			</span>
+			<div class="card-content">
+				<span class="card-content-title">Smash 64</span>
+				<span class="card-content-subtitle">this is a very long description of the game.</img>
+			</div>
+			<div class="card-footer">
+				
+			</div>
+		</div>
+	</div>
+	
 	</body>
 
 	<script type="text/javascript" src="js/header.js"></script>
+	<script type="text/javascript" src="js/game_card.js"></script>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
 	<script type="text/javascript"> 
 		window.onload = function() {
 			create_nav_bar_at("navigation_bar", "Games");
+
+			$.get("https://web.engr.oregonstate.edu/~altond/dist/php/supported_games.php", function(res) {
+				let game_list = document.getElementById("game-list");
+				let games = JSON.parse(res);
+
+				games.forEach(function(game) {
+					let card = create_game_card(game);
+					game_list.appendChild(card);
+				})
+			});
 		}
 	</script>
 </html>
