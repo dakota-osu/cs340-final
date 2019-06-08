@@ -1,5 +1,12 @@
 /* sourced from : https://codepen.io/aronduby/pen/qliuj?editors=1100 */
 
+#tourney-bracket {
+	margin-left: auto;
+	margin-right: auto;
+
+	display: inline-block;
+}
+
 div .bracket {
 	display:flex;
 	flex-direction:row;

@@ -28,7 +28,7 @@
 			create_nav_bar_at("navigation_bar", "Tournament");
 
 			let url_base = "https://web.engr.oregonstate.edu/~altond/dist/php/bracket.php";
-			let url = url_base + "?tourney=9";
+			let url = url_base + window.location.search;
 			$.get(url, function(res) {
 				let bracket = document.getElementById("tourney-bracket");
 				// bracket.innerHTML = res;

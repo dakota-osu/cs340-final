@@ -48,10 +48,13 @@ function create_tournament_card(tournament) {
 	card_footer_action.classList.add("card-footer-action");
 	card_footer_action.innerHTML = "Go To Tournament";
 
-	// add the function to navigate to the specific function
+
+	card_footer.onclick = function() {
+		let path = "/" + window.location.pathname.split('/')[1] + "/dist/bracket.html";
+		window.location.href = path + "?tourney=" + tournament["tid"];
+	}
 
 	card_footer.appendChild(card_footer_action);
-
 	card.appendChild(card_footer);
 
 	return card;
