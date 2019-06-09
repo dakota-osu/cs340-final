@@ -17,17 +17,23 @@
 
 	<div id="tournament-list">
 		<div class="card">
-			<span class="card-header">Tournament One</span>
-			<div class="card-content">
-				<span class="card-content-title">Player Count</span>
-				<span class="card-content-subtitle">8</span>
-			</div>
-			<div class="card-content">
-				<span class="card-content-title">Game</span>
-				<span class="card-content-subtitle">Super Smash Brothers</span>
-			</div>
+			<span class="card-header">Create Tournament</span>
+			<form id="create-tournament-form">
+				<div class="card-content">
+					<span class="card-content-title">Player Count</span>
+					<span class="card-content-input">
+						<input class="card-content-subtitle" id="pc" value=""></input>
+					</span>
+				</div>
+				<div class="card-content">
+					<span class="card-content-title">Name</span>
+					<span class="card-content-input">
+						<input class="card-content-subtitle" id="tn" value=""></input>
+					</span>
+				</div>
+			</form>
 			<div class="card-footer">
-				<button class="card-footer-action">Go To Tournament</button>
+				<button class="card-footer-action" id="create-tourney">Create Tournament</button>
 			</div>
 		</div>
 	</div>
@@ -50,7 +56,34 @@
 					tournament_list.appendChild(card);
 				});	
 			});
+		
+			let create_tourney = document.getElementById("create-tourney");
+			create_tourney.onclick = function() {
+				let pc = document.getElementById("pc");
+				let tn = document.getElementById("tn");
+
+				let failed = false;
+				if(!validate_player_count(pc.value)) {
+					pc.classList.add("error");	
+					failed = true;
+				}
+					
+				if(!validate_tourney_name(tn.value)) {
+					tn.classList.add("error");
+					failed = true;
+				}
+				
+
+				if(failed) {
+					return;
+				}
 			
+				let url = "php/tournament.php";
+				let data = {
+						
+				};
+			
+			};
 		}
 	</script>
 </html>

@@ -3,6 +3,7 @@
 	<head>
 		<link rel="stylesheet" href="css/color.css">
 		<link rel="stylesheet" href="css/style.css">
+		<link rel="stylesheet" href="css/account.css">
 	</head>
 
 	<body>
@@ -14,15 +15,44 @@
 	</header>
 
 
-
-	login
+	<div class="card">
+		<span class="card-header" id="user-name">User Name</span>
+		<div class="card-content">
+			<span class="card-content-title">Games Won</span>
+			<span class="card-content-subtitle" id="game-count"></span>
+		</div>
+		<div class="card-content">
+			<span class="card-content-title">Tournaments Played</span>
+			<span class="card-content-subtitle" id="tourney-count"></span>
+		</div>
+		<div class="card-footer"> 
+			
+		</div>
+	</div>
 
 	</body>
 
 	<script type="text/javascript" src="js/header.js"></script>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
 	<script type="text/javascript"> 
 		window.onload = function() {
 			create_nav_bar_at("navigation_bar", "Login");
+
+			if(localStorage.getItem("user_name")) {
+				let url = "php/account.php?user=" + localStorage.getItem("user_name");
+				
+				document.getElementById("user-name").innerHTML = localStorage.getItem("user_name");
+
+				$.get(url, function(res) {
+					let game_count = document.getElementById("game-count");
+					let tourney_count = document.getElementById("tourney-count");
+
+					res = JSON.parse(res);
+
+					game_count.innerHTML = res["games_won"];
+					tourney_count.innerHTML = res["tournaments_played"]; 
+				});
+			}
 		}
 	</script>
 </html>

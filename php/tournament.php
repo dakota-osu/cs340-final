@@ -31,6 +31,9 @@ if($_SERVER['REQUEST_METHOD'] === 'GET') {
 		echo json_encode($response_data);
 		http_response_code(200);
 	}
+} else if($_SERVER['REQUEST_METHOD'] === 'POST'){
+	
+
 }
 
 

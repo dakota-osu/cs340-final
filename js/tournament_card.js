@@ -59,3 +59,22 @@ function create_tournament_card(tournament) {
 
 	return card;
 }
+
+function validate_player_count(pc) {
+	return isNaN(pc); 
+}
+
+function validate_tourney_name(tn) {
+	return tn.length;
+}
+
+function next_pow_two(n) {
+	let i = 1;
+
+	while(i*i < n) {
+		i += 1;
+	}
+	
+	return i*i;
+
+}
