@@ -16,7 +16,7 @@
 
 
 	<div id="tournament-list">
-		<div class="card">
+		<div class="card" id="create-tournament-card">
 			<span class="card-header">Create Tournament</span>
 			<form id="create-tournament-form">
 				<div class="card-content">
@@ -46,7 +46,11 @@
 	<script type="text/javascript"> 
 		window.onload = function() {
 			create_nav_bar_at("navigation_bar", "Tournaments");
-		
+	
+			if(localStorage.getItem("logged_in") && localStorage.getItem("logged_in") === "false") {
+				document.getElementById("create-tournament-card").classList.add("hidden");
+			}
+
 			$.get("https://web.engr.oregonstate.edu/~altond/dist/php/tournament.php", function(res) {
 				let tournament_list = document.getElementById("tournament-list");
 				let tournaments = JSON.parse(res);

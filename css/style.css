@@ -57,3 +57,7 @@ body {
 	float: right;
 	padding-right: 10px;
 }
+
+.hidden {
+	display: none;
+}
