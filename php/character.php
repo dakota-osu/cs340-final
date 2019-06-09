@@ -12,7 +12,7 @@ if(!$conn) {
 
 if($_SERVER['REQUEST_METHOD'] === 'GET') {
 	
-	$query = "SELECT * FROM Character";
+	$query = "SELECT * FROM `Character`";
 
 	$result = mysqli_query($conn, $query);
 
