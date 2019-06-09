@@ -14,22 +14,27 @@ if($_SERVER['REQUEST_METHOD'] === 'POST') {
 		echo "invalid post recieved";
 		http_response_code(400);
 		exit("failure");
-	} 
+	}
 
 	$user_name = $_POST['user'];
 	$password = md5($_POST['pass']);
 
-	$query = "INSERT INTO `Account` (user_name, hashed_pass) VALUES (\"{$user_name}\", \"{$password}\")";
-	$result = mysqli_query($conn, $query);
-
 	$response = array("value" => false);
-	if($result) {
-		$response["value"] = true;
-	} 
+	if(strlen($user_name) == 0) {
+		echo json_encode($response);
+		http_response_code(500);
+	} else {
 
-	echo json_encode($response);
-	http_response_code(200);
+		$query = "INSERT INTO `Account` (user_name, hashed_pass) VALUES (\"{$user_name}\", \"{$password}\")";
+		$result = mysqli_query($conn, $query);
 
+		if($result) {
+			$response["value"] = true;
+		} 
 
+		echo json_encode($response);
+		http_response_code(200);
+
+	}
 }
 ?>

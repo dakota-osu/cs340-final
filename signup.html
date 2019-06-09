@@ -88,18 +88,20 @@
 				
 				$.post(url, data, function(res) {
 					res = JSON.parse(res);
-					
 					if(res.value) {
 						localStorage.setItem("logged_in", true);
+						localStorage.setItem("user_name", username.value);
 						window.location.href = "https://web.engr.oregonstate.edu/~altond/dist/tournament.html";
 					} else {
 						localStorage.setItem("logged_in", false);
 						username.classList.add('signup_error');
 						password.classList.add('signup_error');
+						confirm_password.classList.add('signup_error');
 						
 						let labels = document.getElementsByTagName("label");
 						labels[0].classList.add('signup_error');
 						labels[1].classList.add('signup_error');
+						labels[2].classList.add('signup_error');
 					}
 
 				});
