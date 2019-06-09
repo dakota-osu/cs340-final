@@ -25,6 +25,10 @@
 			<span class="card-content-title">Tournaments Played</span>
 			<span class="card-content-subtitle" id="tourney-count"></span>
 		</div>
+		<div class="card-content">
+			<span class="card-content-title">Tournaments Won</span>
+			<span class="card-content-subtitle" id="tourney-won"></span>
+		</div>
 		<div class="card-footer"> 
 			
 		</div>
@@ -36,7 +40,7 @@
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
 	<script type="text/javascript"> 
 		window.onload = function() {
-			create_nav_bar_at("navigation_bar", "Login");
+			create_nav_bar_at("navigation_bar", "Account");
 
 			if(localStorage.getItem("user_name")) {
 				let url = "php/account.php?user=" + localStorage.getItem("user_name");
@@ -46,11 +50,13 @@
 				$.get(url, function(res) {
 					let game_count = document.getElementById("game-count");
 					let tourney_count = document.getElementById("tourney-count");
+					let tourney_won = document.getElementById("tourney-won");
 
 					res = JSON.parse(res);
 
 					game_count.innerHTML = res["games_won"];
 					tourney_count.innerHTML = res["tournaments_played"]; 
+					tourney_won.innerHTML = res["tournaments_won"];
 				});
 			}
 		}

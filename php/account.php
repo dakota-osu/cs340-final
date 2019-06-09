@@ -27,7 +27,8 @@ if($_SERVER['REQUEST_METHOD'] === 'GET') {
 
 	$response = array(
 		"games_won" => 0,
-		"tournaments_played" => 0
+		"tournaments_played" => 0,
+		"tournaments_won" => 0
 	);
 
 	if(!$result) {
@@ -46,6 +47,18 @@ if($_SERVER['REQUEST_METHOD'] === 'GET') {
 
 	if($row = mysqli_fetch_row($result)) {
 		$response["tournaments_played"] = $row[0];
+	} 
+
+
+	$tourney_victory = "SELECT COUNT(M.id) FROM `Match` M, Tournament T
+		WHERE 	M.victor = \"{$user_name}\" AND
+				M.tournament_id = T.tid AND
+						M.round = (SELECT MAX(M1.round) FROM `Match` M1 WHERE M1.tournament_id = T.tid)";
+
+	$result = mysqli_query($conn, $tourney_victory);
+
+	if($row = mysqli_fetch_row($result)) {
+		$response["tournaments_won"] = $row[0];
 	} 
 
 	echo json_encode($response);
