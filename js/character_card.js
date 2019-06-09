@@ -30,11 +30,14 @@ function create_character_card(character) {
 	card_header.appendChild(card_header_img);
 	
 	let card_content1 = create_card_content(character["id"], character["game"]);
-	let card_content2 = create_card_content("Pick Rate", character["pick_rate"])
+	let card_content2 = create_card_content("Pick Rate", character["pick_rate"]);
+	let card_content3 = create_card_content("Win Rate", character["win_rate"]);
 
 	card.appendChild(card_header);
 	card.appendChild(card_content1);
 	card.appendChild(card_content2);
+	card.appendChild(card_content3);
+
 
 	return card;
 }
