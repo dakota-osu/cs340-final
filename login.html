@@ -74,6 +74,7 @@
 					
 					if(res.value) {
 						localStorage.setItem("logged_in", true);
+						localStorage.setItem("user_name", username.value);
 						window.location.href = "tournament.html";
 					} else {
 						localStorage.setItem("logged_in", false);
